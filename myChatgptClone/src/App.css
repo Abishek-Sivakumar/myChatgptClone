@@ -38,3 +38,10 @@ body {
   color: tomato;
   border: 2px solid brown;
 }
+
+#userInput {
+  padding: 10px 15px;
+  border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 20px;
+}
