@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import getMessageFromMistral from "./ai.js";
 
 function App() {
   const [messages, setMessages] = useState([
@@ -17,10 +18,18 @@ function App() {
     );
   });
 
+  async function getMessage() {
+    const msgdata = await getMessageFromMistral(messages[messages.length - 1]);
+    setMessages((prevMsg) => [...prevMsg, msgdata]);
+    console.log(msgdata);
+  }
+
   return (
     <>
       <section className="messages-container">{messagesChat}</section>
-      <button className="sendButton">Send Message</button>
+      <button className="sendButton" onClick={getMessage}>
+        Send Message
+      </button>
     </>
   );
 }
