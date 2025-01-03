@@ -6,7 +6,8 @@ import { nanoid } from "nanoid";
 function App() {
   const [message, setMessage] = useState([
     {
-      type: "user",
+      id: nanoid(),
+      type: "bot",
       msg: "Hello I am Abishek",
     },
   ]);
@@ -16,12 +17,12 @@ function App() {
   // });
 
   const messagesChat = message.map((chat) => (
-    <div className="message-div" key={nanoid()}>
+    <div className={chat.type == "user" ? "userMsg" : null} key={chat.id}>
       <h2>{chat.msg}</h2>
     </div>
   ));
 
-  console.log(messagesChat);
+  // console.log(messagesChat);
 
   // function getMessage(formData) {
   //   console.log(formData.get("userInput"));
@@ -32,26 +33,29 @@ function App() {
     setMessage((prevMsg) => [
       ...prevMsg,
       {
+        id: nanoid(),
         type: "user",
         msg: userInput,
       },
     ]);
-    console.log(message);
+    // console.log(message);
     const msgData = await getMessageFromMistral(userInput);
     setMessage((prevBotMsg) => [
       ...prevBotMsg,
       {
+        id: nanoid(),
         type: "bot",
         msg: msgData,
       },
     ]);
-    console.log(msgData);
+    // console.log(msgData);
   }
 
   return (
     <>
       <section className="messages-container">{messagesChat}</section>
-      <form action={getMessages}>
+      <div className="empty-div"></div>
+      <form action={getMessages} className="input-form">
         <input
           type="text"
           id="userInput"
