@@ -1,7 +1,7 @@
 import { HfInference } from "@huggingface/inference";
 
 const SYSTEM_PROMPT = `
-    You are now a chat bot like ChatGpt which will communicate with the user based on the prompts given
+    You are now a chat bot like ChatGpt which will communicate with the user based on the prompts given.
 `;
 
 const hf = new HfInference(import.meta.env.VITE_HF_KEY);
