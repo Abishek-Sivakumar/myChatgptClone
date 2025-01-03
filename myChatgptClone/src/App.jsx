@@ -1,51 +1,65 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import getMessageFromMistral from "./ai.js";
 import { nanoid } from "nanoid";
 
 function App() {
-  const [messageFromUser, setMessageFromUser] = useState([]);
-
-  const [messageFromBot, setMessageFromBot] = useState([]);
+  const [message, setMessage] = useState([
+    {
+      type: "user",
+      msg: "Hello I am Abishek",
+    },
+  ]);
 
   // useEffect(() => {
   //   setMessageFromUser((initialMsg) => [...initialMsg, "Hello Mistral"]);
   // });
 
-  const messagesChat = messageFromBot.map((msg) => {
-    return (
-      <div className="message-div" key={nanoid()}>
-        <h2>{msg}</h2>
-      </div>
-    );
-  });
+  const messagesChat = message.map((chat) => (
+    <div className="message-div" key={nanoid()}>
+      <h2>{chat.msg}</h2>
+    </div>
+  ));
 
-  async function getMessage() {
-    setMessageFromUser((prevUserMsg) => [
-      ...prevUserMsg,
-      document.getElementById("userInput").value,
+  console.log(messagesChat);
+
+  // function getMessage(formData) {
+  //   console.log(formData.get("userInput"));
+  // }
+
+  async function getMessages(formData) {
+    const userInput = formData.get("userInput");
+    setMessage((prevMsg) => [
+      ...prevMsg,
+      {
+        type: "user",
+        msg: userInput,
+      },
     ]);
-    console.log(messageFromUser);
-    const msgData = await getMessageFromMistral(
-      messageFromUser[messageFromUser.length - 1]
-    );
-    setMessageFromBot((prevBotMsg) => [...prevBotMsg, msgData]);
+    console.log(message);
+    const msgData = await getMessageFromMistral(userInput);
+    setMessage((prevBotMsg) => [
+      ...prevBotMsg,
+      {
+        type: "bot",
+        msg: msgData,
+      },
+    ]);
     console.log(msgData);
   }
 
   return (
     <>
       <section className="messages-container">{messagesChat}</section>
-      <input
-        type="text"
-        id="userInput"
-        placeholder="How Can I help You Today"
-      ></input>
-      <button className="sendButton" onClick={getMessage}>
-        Send Message
-      </button>
+      <form action={getMessages}>
+        <input
+          type="text"
+          id="userInput"
+          name="userInput"
+          placeholder="How Can I help You Today"
+        ></input>
+        <button className="sendButton">Send Message</button>
+      </form>
     </>
   );
 }
