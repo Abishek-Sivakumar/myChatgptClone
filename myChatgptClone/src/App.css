@@ -70,7 +70,7 @@ body {
   color: tomato;
   border: 2px solid brown;
 } */
-button {
+.sendButton {
   padding: 1.3em 3em;
   font-size: 12px;
   text-transform: uppercase;
@@ -86,14 +86,70 @@ button {
   outline: none;
 }
 
-button:hover {
+.sendButton:hover {
   background-color: #23c483;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
   transform: translateY(-7px);
 }
 
-button:active {
+.sendButton:active {
+  transform: translateY(-1px);
+}
+
+.listenButton {
+  padding: 1.3em 3em;
+  margin-right: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #008ffe;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.listenButton:hover {
+  background-color: #008ffe;
+  box-shadow: 0px 15px 20px #83b8e0;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.listenButton:active {
+  transform: translateY(-1px);
+}
+
+.stopButton {
+  padding: 1.3em 3em;
+  margin-right: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #fe2929;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.stopButton:hover {
+  background-color: #fe2929;
+  box-shadow: 0px 15px 20px #ef7e7e;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.stopButton:active {
   transform: translateY(-1px);
 }
 

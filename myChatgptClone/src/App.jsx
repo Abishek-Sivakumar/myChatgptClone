@@ -86,7 +86,7 @@ function App() {
           onChange={(e) => setUserInput(e.target.value)} // Updates input manually if typed
         />
         <button
-          className="listenButton"
+          className={listening ? "stopButton" : "listenButton"}
           type="button"
           onClick={listening ? stopListening : startListening}
         >
