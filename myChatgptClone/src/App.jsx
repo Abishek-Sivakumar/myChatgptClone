@@ -70,6 +70,13 @@ function App() {
             key={chat.id}
           >
             <h2>{chat.msg}</h2>
+            <h3>
+              {new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                // hour12: false, To display time in 24-hour format without am and pm
+              })}
+            </h3>
           </div>
         ))}
       </section>
