@@ -8,7 +8,7 @@ function App() {
     {
       id: nanoid(),
       type: "bot",
-      msg: "Hello, I am ChatBot created by Team 12 for the Mini Project 2",
+      msg: "Hello, I am ChatBot created by Team 11 for the Mini Project 2",
     },
   ]);
 
