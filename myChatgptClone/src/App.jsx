@@ -51,8 +51,7 @@ function App() {
       ...prevBotMsg,
       { id: nanoid(), type: "bot", msg: msgData },
     ]);
-
-    setUserInput(""); // Clear input field after sending message
+    setUserInput("");
   }
 
   // console.log(messagesChat);
@@ -90,7 +89,7 @@ function App() {
           name="userInput"
           placeholder="How can I help you today?"
           value={userInput}
-          onChange={(e) => setUserInput(e.target.value)} // Updates input manually if typed
+          onChange={(e) => setUserInput(e.target.value)}
         />
         <button
           className={listening ? "stopButton" : "listenButton"}
